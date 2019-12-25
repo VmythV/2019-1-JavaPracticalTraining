@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;Mystar/src/com.ahstu&apos;&#x0D;&#x0A;- Original project: &apos;Mystar&apos;&#x0D;&#x0A;- Destination element: &apos;Mystar/src/com.ahstu&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     MyStarPanel.java&#x0D;&#x0A;     MyStar.java" description="Copy compilation units" destination="/src&lt;com.ahstu" element1="/src&lt;{MyStarPanel.java" element2="/src&lt;{MyStar.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1577083050666" units="2" version="1.0"/>
+</session>

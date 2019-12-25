@@ -1,0 +1,22 @@
+package com.ahstu;
+
+import javax.swing.JFrame;
+
+public class BirdGame {
+	public static void main(String[] args) {
+
+        JFrame frame = new JFrame("bird_game");
+        
+        Sky sky = new Sky();
+        frame.add(sky);
+        sky.action();
+        
+        frame.setSize(432, 674);
+        //frame.setAlwaysOnTop(false);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setVisible(true);
+        
+    }
+}

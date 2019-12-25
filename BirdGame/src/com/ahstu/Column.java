@@ -1,0 +1,39 @@
+package com.ahstu;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
+
+public class Column {
+	int column_x, column_y; // 钢管的中心坐标
+	int width, height; // 宽度高度
+	int gap = 140; // 钢管的空隙
+	Random random = new Random();// 随机坐标
+	BufferedImage ColumnImage; // 钢管图片
+
+	public Column(int x) {
+		super();
+		try {
+			ColumnImage = ImageIO.read(Sky.class.getResource("images/column.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		column_x = x;
+		column_y = random.nextInt(180) + 150;
+		width = ColumnImage.getWidth();
+		height = ColumnImage.getHeight();
+	}
+
+
+	// 钢管动画方法
+	public void move() {
+		column_x--;
+		if (column_x < -width / 2) {
+			column_y = random.nextInt(180) + 150;
+			column_x = 432 + width / 2;
+		}
+	}
+}

@@ -1,0 +1,104 @@
+package com.ahstu;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JPanel;
+
+public class MyWordPanel extends JPanel implements Runnable, KeyListener {
+	int[] xx = new int[10];
+	int[] yy = new int[10];
+	char[] words = new char[10];
+	int score = 0;
+	Color[] colors = new Color[10];
+	int speed = 10;
+
+	public MyWordPanel() {
+		for (int i = 0; i < 10; i++) {
+			xx[i] = (int) (Math.random() * 800);
+			yy[i] = (int) (Math.random() * 600);
+			words[i] = (char) ((int) (Math.random() * 26 + 65));
+			colors[i] = getColor();
+		}
+	}
+
+	private Color getColor() {
+		int R = (int)(Math.random()*255);
+		int G = (int)(Math.random()*255);
+		int B = (int)(Math.random()*255);
+		return new Color(R,G,B);
+	}
+
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+		g.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 28));
+		for (int i = 0; i < 10; i++) {
+			g.setColor(colors[i]);
+			g.drawString("" + words[i], xx[i], yy[i]);
+		}
+		g.drawString("·ÖÊý£º"+score, 50, 50);
+
+	}
+
+	@Override
+	public void run() {
+		while (true) {
+
+			for (int i = 0; i < 10; i++) {
+				yy[i]++;
+				if (yy[i] > 600) {
+					yy[i] = 0;
+				}
+			}
+			if(score>20) {
+				speed = 8;
+			}
+			if(score>40) {
+				speed = 6;
+			}
+			if(score>60) {
+				speed = 4;
+			}
+			if(score>80) {
+				speed = 2;
+			}
+
+			try {
+				Thread.sleep(speed);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			repaint();
+		}
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < 10; i++) {
+			if (e.getKeyCode() == words[i]) {
+				words[i] = (char) ((int) (Math.random() * 26 + 65));
+				xx[i] = (int) (Math.random() * 800);
+				yy[i] = -(int) (Math.random() * 600);
+				score++;
+				break;
+			}
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+}
